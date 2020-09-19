@@ -11,7 +11,7 @@ library(tidyverse)
 ```
 
 
-#Problem 1
+## Problem 1
 
 Create a data frame with the specified elements.
 
@@ -46,4 +46,4 @@ as.numeric(pull(prob1_df, factor_vector))
 
 I can convert the variables of logical and factor but not character.
 
-#Problem 2
+## Problem 2
