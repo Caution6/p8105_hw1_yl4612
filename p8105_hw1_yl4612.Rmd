@@ -44,6 +44,24 @@ as.numeric(pull(prob1_df, character_vector))
 as.numeric(pull(prob1_df, factor_vector))
 ```
 
-I can convert the variables of logical and factor but not character.
+I can convert the variables of logical and factor but not character. 
+
+R treat "FALSE" as 0 and "TRUE" as 1. It could sometimes assign numbers to factor levels. This helps explain what happens when I take the mean. 
+
+Convert logical vector, and multiply the random sample by the result.
+
+```{r convert_multiply}
+as.numeric(pull(prob1_df, random_sample_gt_0))*pull(prob1_df, random_sample)
+as.factor(pull(prob1_df, random_sample_gt_0))*pull(prob1_df, random_sample)
+as.numeric(as.factor(pull(prob1_df, random_sample_gt_0)))*pull(prob1_df, random_sample)
+```
+
 
 ## Problem 2
+
+Load the penguins dataset. 
+
+```{r load_dataset}
+data("penguins", package = "palmerpenguins")
+```
+
