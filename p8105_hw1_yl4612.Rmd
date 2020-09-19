@@ -5,3 +5,45 @@ output: github_document
 ---
 
 This is my solution to HW1.
+
+```{r}
+library(tidyverse)
+```
+
+
+##Problem 1
+
+Create a data frame with the specified elements.
+
+```{r create_df}
+prob1_df =
+  tibble(
+    random_sample = rnorm(10),
+    random_sample_gt_0 = random_sample > 0,
+    character_vector = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+    factor_vector = factor(c("tall", "tall", "dwarf", "medium", "dwarf", "medium", "tall", "tall", "tall", "dwarf"))
+  )
+```
+
+Take the mean of each variable in my data frame.
+
+```{r mean_pull_var}
+mean(pull(prob1_df, random_sample))
+mean(pull(prob1_df, random_sample_gt_0))
+mean(pull(prob1_df, character_vector))
+mean(pull(prob1_df, factor_vector))
+```
+
+I can take the mean of numbers and logical but not character or factor.
+
+Convert variables from one type to another.
+
+```{r try_numeric}
+as.numeric(pull(prob1_df, random_sample_gt_0))
+as.numeric(pull(prob1_df, character_vector))
+as.numeric(pull(prob1_df, factor_vector))
+```
+
+I can convert the variables of logical and factor but not character.
+
+##Problem 2
