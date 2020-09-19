@@ -65,3 +65,42 @@ Load the penguins dataset.
 data("penguins", package = "palmerpenguins")
 ```
 
+The short description of the penguins dataset:
+
+It includes important variables named as `r colnames(penguins)`. 
+
+The range of bill length is `r max(pull(penguins, bill_length_mm), na.rm = TRUE) - min(pull(penguins, bill_length_mm), na.rm = TRUE)` mm.
+
+The range of bill depth is `r max(pull(penguins, bill_depth_mm), na.rm = TRUE) - min(pull(penguins, bill_depth_mm), na.rm = TRUE)` mm.
+
+The range of flipper length is `r max(pull(penguins, flipper_length_mm), na.rm = TRUE) - min(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
+
+The range of body mass is `r max(pull(penguins, body_mass_g), na.rm = TRUE) - min(pull(penguins, body_mass_g), na.rm = TRUE)` g.
+
+It has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+
+The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
+
+Create the dataframe containing variables for scatterplot.
+
+```{r df_create}
+set.seed(1234)
+
+plot_df = tibble(
+  x_bl = pull(penguins, bill_length_mm),
+  y_fl = pull(penguins, flipper_length_mm)
+)
+```
+
+Plot the scatterplot of `y_fl` vs `x_bl`. 
+
+```{r yx_scatter}
+ggplot(plot_df, aes(x = x_bl, y = y_fl, color = pull(penguins, species), na.rm = TRUE)) + geom_point()
+```
+
+Export scatterplot to project directory.
+
+```{r}
+ggsave(file="penguins.pdf")
+```
+
